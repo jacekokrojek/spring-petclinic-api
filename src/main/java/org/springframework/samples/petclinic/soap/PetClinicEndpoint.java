@@ -1,12 +1,25 @@
 package org.springframework.samples.petclinic.soap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.samples.petclinic.rest.BindingErrorsResponse;
 import org.springframework.samples.petclinic.service.ClinicService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
 @Endpoint
@@ -31,9 +44,9 @@ public class PetClinicEndpoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "setOwnersRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addOwnerRequest")
     @ResponsePayload
-    public SetOwnerResponse getOwners(@RequestPayload SetOwnerRequest ownerRequest) {
+    public AddOwnerResponse addOwner(@RequestPayload AddOwnerRequest ownerRequest) {
         org.springframework.samples.petclinic.model.Owner owner = new org.springframework.samples.petclinic.model.Owner();
         Owner own = ownerRequest.getOwner();
         if (own != null) {
@@ -45,8 +58,24 @@ public class PetClinicEndpoint {
             this.clinicService.saveOwner(owner);
         }
 
-        SetOwnerResponse response = new SetOwnerResponse();
+        AddOwnerResponse response = new AddOwnerResponse();
         return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateOwnerRequest")
+    @ResponsePayload
+    public UpdateOwnerResponse updateOwner(@RequestPayload UpdateOwnerRequest ownerRequest) {
+        Owner owner = ownerRequest.getOwner();
+        org.springframework.samples.petclinic.model.Owner currentOwner = this.clinicService.findOwnerById(owner.id);
+        currentOwner.setAddress(owner.getAddress());
+        currentOwner.setCity(owner.getCity());
+        currentOwner.setFirstName(owner.getFirstName());
+        currentOwner.setLastName(owner.getLastName());
+        currentOwner.setTelephone(owner.getTelephone());
+        this.clinicService.saveOwner(currentOwner);
+        UpdateOwnerResponse response = new UpdateOwnerResponse();
+        return response;
+
     }
 
 
