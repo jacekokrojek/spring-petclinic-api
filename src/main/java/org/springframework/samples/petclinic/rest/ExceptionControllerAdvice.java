@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @author Vitaliy Fedoriv
@@ -43,7 +44,7 @@ public class ExceptionControllerAdvice {
 		}
 		return ResponseEntity.badRequest().body(respJSONstring);
 	}
-	
+
 	private class ErrorInfo {
 	    public final String className;
 	    public final String exMessage;

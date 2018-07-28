@@ -23,12 +23,12 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "owners")
+    @Bean(name = "services")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema ownersSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("OwnersPort");
+        wsdl11Definition.setPortTypeName("PetClinicPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://spring.io/owner/owner-web-service");
+        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap");
         wsdl11Definition.setSchema(ownersSchema);
         return wsdl11Definition;
     }

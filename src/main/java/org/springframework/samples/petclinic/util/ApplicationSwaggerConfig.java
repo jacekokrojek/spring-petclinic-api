@@ -17,6 +17,7 @@
 package org.springframework.samples.petclinic.util;
 
 
+import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Java config for Springfox swagger documentation plugin
- * 
+ *
  * @author Vitaliy Fedoriv
  *
  */
@@ -47,6 +48,7 @@ public class ApplicationSwaggerConfig {
     		  .select()
               .apis(RequestHandlerSelectors.any())
               .paths(PathSelectors.any())
+              .paths(Predicates.not(PathSelectors.regex("/error.*")))
               .build()
               .apiInfo(getApiInfo());
    }

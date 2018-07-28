@@ -1,21 +1,33 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/owner/owner-web-service"
-           targetNamespace="http://spring.io/owner/owner-web-service" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://petclinic.samples.springframework.org/soap"
+           targetNamespace="http://petclinic.samples.springframework.org/soap" elementFormDefault="qualified">
 
     <xs:element name="getOwnersRequest">
         <xs:complexType>
         </xs:complexType>
     </xs:element>
 
-
     <xs:element name="getOwnersResponse">
         <xs:complexType>
             <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                <xs:element name="owner" type="tns:owner" />
+                <xs:element name="owner" type="tns:Owner" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="owner">
+    <xs:element name="setOwnerResponse">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="setOwnerRequest">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element name="owner" type="tns:Owner" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Owner">
         <xs:sequence>
             <xs:element name="firstName" type="xs:string"/>
             <xs:element name="lastName" type="xs:string"/>
@@ -24,6 +36,5 @@
             <xs:element name="telephone" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-
 
 </xs:schema>
