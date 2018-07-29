@@ -85,6 +85,7 @@ public class OwnerEndpoint {
         org.springframework.samples.petclinic.model.Owner own = this.clinicService.findOwnerById(id);
         if (own != null) {
             Owner owner = new Owner();
+            owner.setId(own.getId());
             owner.setFirstName(own.getFirstName());
             owner.setLastName(own.getLastName());
             owner.setTelephone(own.getTelephone());
@@ -98,6 +99,7 @@ public class OwnerEndpoint {
     private void mapOwners(GetOwnersResponse response, Collection<org.springframework.samples.petclinic.model.Owner> owners) {
         for (org.springframework.samples.petclinic.model.Owner own : owners) {
             Owner owner = new Owner();
+            owner.setId(own.getId());
             owner.setFirstName(own.getFirstName());
             owner.setLastName(own.getLastName());
             owner.setTelephone(own.getTelephone());
@@ -110,6 +112,7 @@ public class OwnerEndpoint {
     private void mapFindOwners(FindOwnersResponse response, Collection<org.springframework.samples.petclinic.model.Owner> owners) {
         for (org.springframework.samples.petclinic.model.Owner own : owners) {
             Owner owner = new Owner();
+            owner.setId(own.getId());
             owner.setFirstName(own.getFirstName());
             owner.setLastName(own.getLastName());
             owner.setTelephone(own.getTelephone());

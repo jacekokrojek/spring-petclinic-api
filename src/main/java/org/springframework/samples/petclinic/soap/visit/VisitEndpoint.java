@@ -67,6 +67,7 @@ public class VisitEndpoint {
         org.springframework.samples.petclinic.model.Visit p = this.clinicService.findVisitById(petRequest.getId());
         if (p != null) {
             Visit pet = mapFromModel(p);
+            pet.setDescription("");
             response.getVisit().add(pet);
         }
         return response;
