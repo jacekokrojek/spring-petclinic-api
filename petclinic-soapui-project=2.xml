@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:soapui-project id="ba5d410e-bf79-40b1-8c80-bc0390e2aba9" activeEnvironment="Default" name="petclinic" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:interface xsi:type="con:WsdlInterface" id="e8a494e4-d8ee-44fe-923f-3c0da2cfd65d" wsaVersion="NONE" name="PetClinicPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap}PetClinicPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/services.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="e8a494e4-d8ee-44fe-923f-3c0da2cfd65d" wsaVersion="NONE" name="OwnerPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap}OwnerPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/owner.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/services.wsdl">
+    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/owner.wsdl">
       <con:part>
-        <con:url>http://localhost:9966/petclinic/ws/services.wsdl</con:url>
+        <con:url>http://localhost:9966/petclinic/ws/owner.wsdl</con:url>
         <con:content><![CDATA[<wsdl:definitions targetNamespace="http://petclinic.samples.springframework.org/soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://petclinic.samples.springframework.org/soap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://petclinic.samples.springframework.org/soap">
   <wsdl:types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://petclinic.samples.springframework.org/soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -13,6 +13,20 @@
         <xs:complexType></xs:complexType>
       </xs:element>
       <xs:element name="getOwnersResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getOwnerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getOwnerResponse">
         <xs:complexType>
           <xs:sequence maxOccurs="unbounded" minOccurs="0">
             <xs:element name="owner" type="tns:Owner"/>
@@ -38,6 +52,20 @@
       </xs:element>
       <xs:element name="updateOwnerResponse">
         <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="findOwnersRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lastName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findOwnersResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
       </xs:element>
       <xs:complexType name="Owner">
         <xs:sequence>
@@ -66,10 +94,22 @@
   <wsdl:message name="getOwnersRequest">
     <wsdl:part element="tns:getOwnersRequest" name="getOwnersRequest"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findOwnersRequest">
+    <wsdl:part element="tns:findOwnersRequest" name="findOwnersRequest"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updateOwnerResponse">
     <wsdl:part element="tns:updateOwnerResponse" name="updateOwnerResponse"></wsdl:part>
   </wsdl:message>
-  <wsdl:portType name="PetClinicPort">
+  <wsdl:message name="findOwnersResponse">
+    <wsdl:part element="tns:findOwnersResponse" name="findOwnersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnerResponse">
+    <wsdl:part element="tns:getOwnerResponse" name="getOwnerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnerRequest">
+    <wsdl:part element="tns:getOwnerRequest" name="getOwnerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OwnerPort">
     <wsdl:operation name="getOwners">
       <wsdl:input message="tns:getOwnersRequest" name="getOwnersRequest"></wsdl:input>
       <wsdl:output message="tns:getOwnersResponse" name="getOwnersResponse"></wsdl:output>
@@ -82,8 +122,16 @@
       <wsdl:input message="tns:updateOwnerRequest" name="updateOwnerRequest"></wsdl:input>
       <wsdl:output message="tns:updateOwnerResponse" name="updateOwnerResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findOwners">
+      <wsdl:input message="tns:findOwnersRequest" name="findOwnersRequest"></wsdl:input>
+      <wsdl:output message="tns:findOwnersResponse" name="findOwnersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwner">
+      <wsdl:input message="tns:getOwnerRequest" name="getOwnerRequest"></wsdl:input>
+      <wsdl:output message="tns:getOwnerResponse" name="getOwnerResponse"></wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="PetClinicPortSoap11" type="tns:PetClinicPort">
+  <wsdl:binding name="OwnerPortSoap11" type="tns:OwnerPort">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="getOwners">
       <soap:operation soapAction=""/>
@@ -112,10 +160,28 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findOwners">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="findOwnersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findOwnersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwner">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOwnerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOwnerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="PetClinicPortService">
-    <wsdl:port binding="tns:PetClinicPortSoap11" name="PetClinicPortSoap11">
-      <soap:address location="http://localhost:9966/petclinic/ws"/>
+  <wsdl:service name="OwnerPortService">
+    <wsdl:port binding="tns:OwnerPortSoap11" name="OwnerPortSoap11">
+      <soap:address location="http://localhost:9966/petclinic/ws/owner"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content>
@@ -124,6 +190,7 @@
     </con:definitionCache>
     <con:endpoints>
       <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+      <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
     </con:endpoints>
     <con:operation id="a1c27168-f62c-485f-8883-7e20ae0ace59" isOneWay="false" action="" name="getOwners" bindingOperationName="getOwners" type="Request-Response" outputName="getOwnersResponse" inputName="getOwnersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
@@ -132,7 +199,7 @@
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://petclinic.samples.springframework.org/soap">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -159,14 +226,14 @@
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://petclinic.samples.springframework.org/soap">
    <soapenv:Header/>
    <soapenv:Body>
       <soap:addOwnerRequest>
          <soap:owner>
             <!--type: int-->
-            <soap:id>3</soap:id>
+            <soap:id>1</soap:id>
             <!--type: string-->
             <soap:firstName>gero et</soap:firstName>
             <!--type: string-->
@@ -201,14 +268,14 @@
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://petclinic.samples.springframework.org/soap">
    <soapenv:Header/>
    <soapenv:Body>
       <soap:updateOwnerRequest>
          <soap:owner>
             <!--type: int-->
-            <soap:id>1</soap:id>
+            <soap:id>3</soap:id>
             <!--type: string-->
             <soap:firstName>gero et</soap:firstName>
             <!--type: string-->
@@ -218,7 +285,7 @@
             <!--type: string-->
             <soap:city>verrantque per auras</soap:city>
             <!--type: string-->
-            <soap:telephone>per auras</soap:telephone>
+            <soap:telephone>1234567890</soap:telephone>
          </soap:owner>
       </soap:updateOwnerRequest>
    </soapenv:Body>
@@ -234,6 +301,376 @@
         <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/updateOwnerRequest"/>
         <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="4e5bec67-75a4-4adb-859c-fbe441327e39" isOneWay="false" action="" name="findOwners" bindingOperationName="findOwners" type="Request-Response" outputName="findOwnersResponse" inputName="findOwnersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4d13842a-749b-4767-b85a-b5202d1c4278" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://petclinic.samples.springframework.org/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:findOwnersRequest>\r
+         <!--type: string-->\r
+         <soap:lastName>Franklin</soap:lastName>\r
+      </soap:findOwnersRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/findOwnersRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="9dbf9c26-670d-4e2d-8d88-28858318cfae" isOneWay="false" action="" name="getOwner" bindingOperationName="getOwner" type="Request-Response" outputName="getOwnerResponse" inputName="getOwnerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="c0610e3d-eece-49ed-a06a-a9c06cc7bff5" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://petclinic.samples.springframework.org/soap">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <soap:getOwnerRequest>\r
+         <!--type: int-->\r
+         <soap:id>1</soap:id>\r
+      </soap:getOwnerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnerRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="a1961453-8b4b-4d87-a361-edd639bdebe9" wsaVersion="NONE" name="PetPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap/pet}PetPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/pet.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/pet.wsdl">
+      <con:part>
+        <con:url>http://localhost:9966/petclinic/ws/pet.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://petclinic.samples.springframework.org/soap/pet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://petclinic.samples.springframework.org/soap/pet" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://petclinic.samples.springframework.org/soap/pet">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://petclinic.samples.springframework.org/soap/pet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getPetsRequest">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="getPetsResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPetRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPetResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPetRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPetResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="updatePetRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePetResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="findPetsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lastName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findPetsResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Pet">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="birthDate" type="xs:string"/>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="ownerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addPetRequest">
+    <wsdl:part element="tns:addPetRequest" name="addPetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPetsResponse">
+    <wsdl:part element="tns:findPetsResponse" name="findPetsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetsResponse">
+    <wsdl:part element="tns:getPetsResponse" name="getPetsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetRequest">
+    <wsdl:part element="tns:getPetRequest" name="getPetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPetsRequest">
+    <wsdl:part element="tns:findPetsRequest" name="findPetsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePetRequest">
+    <wsdl:part element="tns:updatePetRequest" name="updatePetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetResponse">
+    <wsdl:part element="tns:getPetResponse" name="getPetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePetResponse">
+    <wsdl:part element="tns:updatePetResponse" name="updatePetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetsRequest">
+    <wsdl:part element="tns:getPetsRequest" name="getPetsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPetResponse">
+    <wsdl:part element="tns:addPetResponse" name="addPetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PetPort">
+    <wsdl:operation name="addPet">
+      <wsdl:input message="tns:addPetRequest" name="addPetRequest"></wsdl:input>
+      <wsdl:output message="tns:addPetResponse" name="addPetResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPets">
+      <wsdl:input message="tns:findPetsRequest" name="findPetsRequest"></wsdl:input>
+      <wsdl:output message="tns:findPetsResponse" name="findPetsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPets">
+      <wsdl:input message="tns:getPetsRequest" name="getPetsRequest"></wsdl:input>
+      <wsdl:output message="tns:getPetsResponse" name="getPetsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPet">
+      <wsdl:input message="tns:getPetRequest" name="getPetRequest"></wsdl:input>
+      <wsdl:output message="tns:getPetResponse" name="getPetResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePet">
+      <wsdl:input message="tns:updatePetRequest" name="updatePetRequest"></wsdl:input>
+      <wsdl:output message="tns:updatePetResponse" name="updatePetResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PetPortSoap11" type="tns:PetPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addPet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addPetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPets">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="findPetsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findPetsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPets">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPetsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPetsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updatePetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PetPortService">
+    <wsdl:port binding="tns:PetPortSoap11" name="PetPortSoap11">
+      <soap:address location="http://localhost:9966/petclinic/ws/pet"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+      <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+    </con:endpoints>
+    <con:operation id="c1009b19-a4a5-4013-ae2b-36f71c82e813" isOneWay="false" action="" name="addPet" bindingOperationName="addPet" type="Request-Response" outputName="addPetResponse" inputName="addPetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="653e693b-e78f-4fef-97a7-bc5d1240c5fd" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:addPetRequest>\r
+         <pet:pet>\r
+            <!--type: int-->\r
+            <pet:id>3</pet:id>\r
+            <!--type: string-->\r
+            <pet:name>gero et</pet:name>\r
+            <!--type: string-->\r
+            <pet:birthDate>sonoras imperio</pet:birthDate>\r
+            <!--type: string-->\r
+            <pet:type>quae divum incedo</pet:type>\r
+            <!--type: int-->\r
+            <pet:ownerId>3</pet:ownerId>\r
+         </pet:pet>\r
+      </pet:addPetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/addPetRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="50413b92-38d1-4155-9d4a-99c866b15c4d" isOneWay="false" action="" name="findPets" bindingOperationName="findPets" type="Request-Response" outputName="findPetsResponse" inputName="findPetsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4d44580d-a32c-4e59-befd-4eea39c621ac" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:findPetsRequest>\r
+         <!--type: string-->\r
+         <pet:lastName>gero et</pet:lastName>\r
+      </pet:findPetsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/findPetsRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="3d4dc966-54c0-4439-81dd-90e70bc392ee" isOneWay="false" action="" name="getPets" bindingOperationName="getPets" type="Request-Response" outputName="getPetsResponse" inputName="getPetsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d577ab7d-3c1d-4b63-af3f-ba20a0be362b" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetsRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="c8927053-55ae-4b3f-8641-741598980e4c" isOneWay="false" action="" name="getPet" bindingOperationName="getPet" type="Request-Response" outputName="getPetResponse" inputName="getPetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="3f974127-effc-4988-b1bf-cddc30facff0" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetRequest>\r
+         <!--type: int-->\r
+         <pet:id>3</pet:id>\r
+      </pet:getPetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="ecd70014-d20b-4568-9da1-035455431067" isOneWay="false" action="" name="updatePet" bindingOperationName="updatePet" type="Request-Response" outputName="updatePetResponse" inputName="updatePetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="1fbaf27f-769e-4bd6-b6dd-6fb247ca64ce" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:updatePetRequest>\r
+         <pet:pet>\r
+            <!--type: int-->\r
+            <pet:id>3</pet:id>\r
+            <!--type: string-->\r
+            <pet:name>gero et</pet:name>\r
+            <!--type: string-->\r
+            <pet:birthDate>sonoras imperio</pet:birthDate>\r
+            <!--type: string-->\r
+            <pet:type>quae divum incedo</pet:type>\r
+            <!--type: int-->\r
+            <pet:ownerId>3</pet:ownerId>\r
+         </pet:pet>\r
+      </pet:updatePetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/updatePetRequest"/>
       </con:call>
     </con:operation>
   </con:interface>

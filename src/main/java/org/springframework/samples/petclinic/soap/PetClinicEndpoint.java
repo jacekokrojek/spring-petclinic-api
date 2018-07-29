@@ -75,9 +75,37 @@ public class PetClinicEndpoint {
         this.clinicService.saveOwner(currentOwner);
         UpdateOwnerResponse response = new UpdateOwnerResponse();
         return response;
-
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "findOwnersRequest")
+    @ResponsePayload
+    public FindOwnersResponse findOwners(@RequestPayload FindOwnersRequest ownersRequest) {
+        FindOwnersResponse response = new FindOwnersResponse();
+        String lastName = ownersRequest.getLastName();
+        Collection<org.springframework.samples.petclinic.model.Owner> owners = this.clinicService.findOwnerByLastName(lastName);
+        if (!owners.isEmpty()) {
+            mapFindOwners(response, owners);
+        }
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOwnerRequest")
+    @ResponsePayload
+    public GetOwnerResponse getOwner(@RequestPayload GetOwnerRequest ownerRequest) {
+        GetOwnerResponse response = new GetOwnerResponse();
+        int id = ownerRequest.getId();
+        org.springframework.samples.petclinic.model.Owner own = this.clinicService.findOwnerById(id);
+        if (own != null) {
+            Owner owner = new Owner();
+            owner.setFirstName(own.getFirstName());
+            owner.setLastName(own.getLastName());
+            owner.setTelephone(own.getTelephone());
+            owner.setCity(own.getCity());
+            owner.setAddress(own.getAddress());
+            response.getOwner().add(owner);
+        }
+        return response;
+    }
 
     private void mapOwners(GetOwnersResponse response, Collection<org.springframework.samples.petclinic.model.Owner> owners) {
         for (org.springframework.samples.petclinic.model.Owner own : owners) {
@@ -90,4 +118,17 @@ public class PetClinicEndpoint {
             response.getOwner().add(owner);
         }
     }
+
+    private void mapFindOwners(FindOwnersResponse response, Collection<org.springframework.samples.petclinic.model.Owner> owners) {
+        for (org.springframework.samples.petclinic.model.Owner own : owners) {
+            Owner owner = new Owner();
+            owner.setFirstName(own.getFirstName());
+            owner.setLastName(own.getLastName());
+            owner.setTelephone(own.getTelephone());
+            owner.setCity(own.getCity());
+            owner.setAddress(own.getAddress());
+            response.getOwner().add(owner);
+        }
+    }
+
 }

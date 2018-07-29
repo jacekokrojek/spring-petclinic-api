@@ -6,7 +6,7 @@
 //
 
 
-package org.springframework.samples.petclinic.soap;
+package org.springframework.samples.petclinic.soap.pet;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "updateOwnerResponse")
-public class UpdateOwnerResponse {
+@XmlRootElement(name = "updatePetResponse")
+public class UpdatePetResponse {
 
 
 }

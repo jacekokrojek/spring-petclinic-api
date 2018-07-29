@@ -6,7 +6,7 @@
 //
 
 
-package org.springframework.samples.petclinic.soap;
+package org.springframework.samples.petclinic.soap.pet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="owner" type="{http://petclinic.samples.springframework.org/soap}Owner"/>
+ *         &lt;element name="pet" type="{http://petclinic.samples.springframework.org/soap/pet}Pet"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,40 +37,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "owner"
+    "pet"
 })
-@XmlRootElement(name = "getOwnersResponse")
-public class GetOwnersResponse {
+@XmlRootElement(name = "getPetResponse")
+public class GetPetResponse {
 
-    protected List<Owner> owner;
+    protected List<Pet> pet;
 
     /**
-     * Gets the value of the owner property.
+     * Gets the value of the pet property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the owner property.
+     * This is why there is not a <CODE>set</CODE> method for the pet property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getOwner().add(newItem);
+     *    getPet().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Owner }
+     * {@link Pet }
      * 
      * 
      */
-    public List<Owner> getOwner() {
-        if (owner == null) {
-            owner = new ArrayList<Owner>();
+    public List<Pet> getPet() {
+        if (pet == null) {
+            pet = new ArrayList<Pet>();
         }
-        return this.owner;
+        return this.pet;
     }
 
 }

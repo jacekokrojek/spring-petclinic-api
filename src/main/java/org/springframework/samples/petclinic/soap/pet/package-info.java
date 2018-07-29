@@ -5,5 +5,5 @@
 // Generated on: 2018.07.29 at 01:16:33 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://petclinic.samples.springframework.org/soap", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package org.springframework.samples.petclinic.soap;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://petclinic.samples.springframework.org/soap/pet", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package org.springframework.samples.petclinic.soap.pet;
