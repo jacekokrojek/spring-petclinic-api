@@ -30,14 +30,9 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("OwnerPort");
         wsdl11Definition.setLocationUri("/ws/owner");
-        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap");
+        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap/owner");
         wsdl11Definition.setSchema(ownersSchema);
         return wsdl11Definition;
-    }
-
-    @Bean
-    public XsdSchema ownersSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/owner.xsd"));
     }
 
     @Bean(name = "pet")
@@ -50,23 +45,29 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return wsdl11Definition;
     }
 
+    @Bean(name = "visit")
+    public DefaultWsdl11Definition visitWsdl11Definition(XsdSchema visitSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("VisitPort");
+        wsdl11Definition.setLocationUri("/ws/visit");
+        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap/pet");
+        wsdl11Definition.setSchema(visitSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema ownersSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/owner.xsd"));
+    }
+
     @Bean
     public XsdSchema petSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/pet.xsd"));
     }
 
+    @Bean
+    public XsdSchema visitSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/visit.xsd"));
+    }
 
-//    @Bean
-//    public XsdSchemaCollection quotesSchemaCollection() {
-//        return new XsdSchemaCollection() {
-//
-//            public XsdSchema[] getXsdSchemas() {
-//                return new XsdSchema[]{new SimpleXsdSchema(new ClassPathResource("xsd/pet.xsd")), new SimpleXsdSchema(new ClassPathResource("xsd/owner.xsd"))};
-//            }
-//
-//            public XmlValidator createValidator() {
-//                throw new UnsupportedOperationException();
-//            }
-//        };
-//    }
 }

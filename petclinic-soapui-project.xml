@@ -1,6 +1,1718 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="db9d3c3c-e97a-4885-a86a-3bb787ac09b0" activeEnvironment="Default" name="petclinic" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="ba5d410e-bf79-40b1-8c80-bc0390e2aba9" activeEnvironment="Default" name="petclinic" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="e8a494e4-d8ee-44fe-923f-3c0da2cfd65d" wsaVersion="NONE" name="OwnerPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap/owner}OwnerPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/owner.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/owner.wsdl">
+      <con:part>
+        <con:url>http://localhost:9966/petclinic/ws/owner.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://petclinic.samples.springframework.org/soap/owner" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://petclinic.samples.springframework.org/soap/owner">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://petclinic.samples.springframework.org/soap/owner" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getOwnersRequest">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="getOwnersResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getOwnerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getOwnerResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addOwnerRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addOwnerResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="updateOwnerRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateOwnerResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="findOwnersRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lastName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="findOwnersResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="owner" type="tns:Owner"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Owner">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="address" type="xs:string"/>
+          <xs:element name="city" type="xs:string"/>
+          <xs:element name="telephone" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getOwnersRequest">
+    <wsdl:part element="tns:getOwnersRequest" name="getOwnersRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOwnersRequest">
+    <wsdl:part element="tns:findOwnersRequest" name="findOwnersRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateOwnerResponse">
+    <wsdl:part element="tns:updateOwnerResponse" name="updateOwnerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findOwnersResponse">
+    <wsdl:part element="tns:findOwnersResponse" name="findOwnersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnerResponse">
+    <wsdl:part element="tns:getOwnerResponse" name="getOwnerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnerRequest">
+    <wsdl:part element="tns:getOwnerRequest" name="getOwnerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOwnersResponse">
+    <wsdl:part element="tns:getOwnersResponse" name="getOwnersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOwnerResponse">
+    <wsdl:part element="tns:addOwnerResponse" name="addOwnerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addOwnerRequest">
+    <wsdl:part element="tns:addOwnerRequest" name="addOwnerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateOwnerRequest">
+    <wsdl:part element="tns:updateOwnerRequest" name="updateOwnerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OwnerPort">
+    <wsdl:operation name="getOwners">
+      <wsdl:input message="tns:getOwnersRequest" name="getOwnersRequest"></wsdl:input>
+      <wsdl:output message="tns:getOwnersResponse" name="getOwnersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOwners">
+      <wsdl:input message="tns:findOwnersRequest" name="findOwnersRequest"></wsdl:input>
+      <wsdl:output message="tns:findOwnersResponse" name="findOwnersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOwner">
+      <wsdl:input message="tns:updateOwnerRequest" name="updateOwnerRequest"></wsdl:input>
+      <wsdl:output message="tns:updateOwnerResponse" name="updateOwnerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwner">
+      <wsdl:input message="tns:getOwnerRequest" name="getOwnerRequest"></wsdl:input>
+      <wsdl:output message="tns:getOwnerResponse" name="getOwnerResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOwner">
+      <wsdl:input message="tns:addOwnerRequest" name="addOwnerRequest"></wsdl:input>
+      <wsdl:output message="tns:addOwnerResponse" name="addOwnerResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OwnerPortSoap11" type="tns:OwnerPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOwners">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOwnersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOwnersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findOwners">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="findOwnersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findOwnersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOwner">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateOwnerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateOwnerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwner">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getOwnerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOwnerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOwner">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addOwnerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addOwnerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OwnerPortService">
+    <wsdl:port binding="tns:OwnerPortSoap11" name="OwnerPortSoap11">
+      <soap:address location="http://localhost:9966/petclinic/ws/owner"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+      <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+    </con:endpoints>
+    <con:operation id="a1c27168-f62c-485f-8883-7e20ae0ace59" isOneWay="false" action="" name="getOwners" bindingOperationName="getOwners" type="Request-Response" outputName="getOwnersResponse" inputName="getOwnersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="803d2176-ad8f-4c0b-ac22-e75c4a11d5bd" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnersRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnersRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="59167213-38d0-4b1a-a50b-47cac74a537b" isOneWay="false" action="" name="addOwner" bindingOperationName="addOwner" type="Request-Response" outputName="addOwnerResponse" inputName="addOwnerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="0c12334a-e334-4229-858a-e9f8963ed9db" name="add new owner">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:addOwnerRequest>
+         <own:owner>
+            <!--type: int-->
+            <own:id>3</own:id>
+            <!--type: string-->
+            <own:firstName>New</own:firstName>
+            <!--type: string-->
+            <own:lastName>Owner</own:lastName>
+            <!--type: string-->
+            <own:address>Address</own:address>
+            <!--type: string-->
+            <own:city>City</own:city>
+            <!--type: string-->
+            <own:telephone>1234567890</own:telephone>
+         </own:owner>
+      </own:addOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/setOwnerRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="652ca2c6-55b3-4fc6-9b66-b6900e09b843" isOneWay="false" action="" name="updateOwner" bindingOperationName="updateOwner" type="Request-Response" outputName="updateOwnerResponse" inputName="updateOwnerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d5b7e786-7916-4517-b0cf-ecbe5d0ae4c2" name="update owner with id 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:updateOwnerRequest>
+         <own:owner>
+            <!--type: int-->
+            <own:id>1</own:id>
+            <!--type: string-->
+            <own:firstName>George updated</own:firstName>
+            <own:lastName>Franklin updated</own:lastName>
+            <own:address>110 W. Liberty St. updated</own:address>
+            <own:city>Madison update</own:city>
+            <own:telephone>1111111111</own:telephone>
+         </own:owner>
+      </own:updateOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/updateOwnerRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="4e5bec67-75a4-4adb-859c-fbe441327e39" isOneWay="false" action="" name="findOwners" bindingOperationName="findOwners" type="Request-Response" outputName="findOwnersResponse" inputName="findOwnersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4d13842a-749b-4767-b85a-b5202d1c4278" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:findOwnersRequest>
+         <!--type: string-->
+         <own:lastName>gero et</own:lastName>
+      </own:findOwnersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/findOwnersRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="9dbf9c26-670d-4e2d-8d88-28858318cfae" isOneWay="false" action="" name="getOwner" bindingOperationName="getOwner" type="Request-Response" outputName="getOwnerResponse" inputName="getOwnerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="c0610e3d-eece-49ed-a06a-a9c06cc7bff5" name="get owner with id 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnerRequest>
+         <!--type: int-->
+         <own:id>1</own:id>
+      </own:getOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnerRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="a1961453-8b4b-4d87-a361-edd639bdebe9" wsaVersion="NONE" name="PetPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap/pet}PetPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/pet.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/pet.wsdl">
+      <con:part>
+        <con:url>http://localhost:9966/petclinic/ws/pet.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://petclinic.samples.springframework.org/soap/pet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://petclinic.samples.springframework.org/soap/pet" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://petclinic.samples.springframework.org/soap/pet">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://petclinic.samples.springframework.org/soap/pet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getPetsRequest">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="getPetsResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPetRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPetResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPetRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addPetResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="updatePetRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="pet" type="tns:Pet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePetResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:complexType name="Pet">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="birthDate" type="xs:string"/>
+          <xs:element name="typeId" type="xs:int"/>
+          <xs:element name="ownerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getPetTypesRequest">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="getPetTypesResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="petType" type="tns:PetType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="PetType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addPetRequest">
+    <wsdl:part element="tns:addPetRequest" name="addPetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetsResponse">
+    <wsdl:part element="tns:getPetsResponse" name="getPetsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetRequest">
+    <wsdl:part element="tns:getPetRequest" name="getPetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetTypesResponse">
+    <wsdl:part element="tns:getPetTypesResponse" name="getPetTypesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePetRequest">
+    <wsdl:part element="tns:updatePetRequest" name="updatePetRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetResponse">
+    <wsdl:part element="tns:getPetResponse" name="getPetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePetResponse">
+    <wsdl:part element="tns:updatePetResponse" name="updatePetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetsRequest">
+    <wsdl:part element="tns:getPetsRequest" name="getPetsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPetResponse">
+    <wsdl:part element="tns:addPetResponse" name="addPetResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPetTypesRequest">
+    <wsdl:part element="tns:getPetTypesRequest" name="getPetTypesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PetPort">
+    <wsdl:operation name="addPet">
+      <wsdl:input message="tns:addPetRequest" name="addPetRequest"></wsdl:input>
+      <wsdl:output message="tns:addPetResponse" name="addPetResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPets">
+      <wsdl:input message="tns:getPetsRequest" name="getPetsRequest"></wsdl:input>
+      <wsdl:output message="tns:getPetsResponse" name="getPetsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPet">
+      <wsdl:input message="tns:getPetRequest" name="getPetRequest"></wsdl:input>
+      <wsdl:output message="tns:getPetResponse" name="getPetResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPetTypes">
+      <wsdl:input message="tns:getPetTypesRequest" name="getPetTypesRequest"></wsdl:input>
+      <wsdl:output message="tns:getPetTypesResponse" name="getPetTypesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePet">
+      <wsdl:input message="tns:updatePetRequest" name="updatePetRequest"></wsdl:input>
+      <wsdl:output message="tns:updatePetResponse" name="updatePetResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PetPortSoap11" type="tns:PetPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addPet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addPetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPets">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPetsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPetsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPetTypes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPetTypesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPetTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updatePetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PetPortService">
+    <wsdl:port binding="tns:PetPortSoap11" name="PetPortSoap11">
+      <soap:address location="http://localhost:9966/petclinic/ws/pet"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+      <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+    </con:endpoints>
+    <con:operation id="c1009b19-a4a5-4013-ae2b-36f71c82e813" isOneWay="false" action="" name="addPet" bindingOperationName="addPet" type="Request-Response" outputName="addPetResponse" inputName="addPetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="653e693b-e78f-4fef-97a7-bc5d1240c5fd" name="add new pet">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pet:addPetRequest>
+         <pet:pet>
+            <!--type: int-->
+            <pet:id>3</pet:id>
+            <!--type: string-->
+            <pet:name>Mike</pet:name>
+            <!--type: string-->
+            <pet:birthDate>2010-09-07</pet:birthDate>
+            <!--type: int-->
+            <pet:typeId>3</pet:typeId>
+            <!--type: int-->
+            <pet:ownerId>1</pet:ownerId>
+         </pet:pet>
+      </pet:addPetRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/addPetRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="3d4dc966-54c0-4439-81dd-90e70bc392ee" isOneWay="false" action="" name="getPets" bindingOperationName="getPets" type="Request-Response" outputName="getPetsResponse" inputName="getPetsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d577ab7d-3c1d-4b63-af3f-ba20a0be362b" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetsRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="c8927053-55ae-4b3f-8641-741598980e4c" isOneWay="false" action="" name="getPet" bindingOperationName="getPet" type="Request-Response" outputName="getPetResponse" inputName="getPetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="3f974127-effc-4988-b1bf-cddc30facff0" name="get pet with id 3">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetRequest>\r
+         <!--type: int-->\r
+         <pet:id>1</pet:id>\r
+      </pet:getPetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="ecd70014-d20b-4568-9da1-035455431067" isOneWay="false" action="" name="updatePet" bindingOperationName="updatePet" type="Request-Response" outputName="updatePetResponse" inputName="updatePetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="1fbaf27f-769e-4bd6-b6dd-6fb247ca64ce" name="update pet with id 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:updatePetRequest>\r
+         <pet:pet>\r
+            <!--type: int-->\r
+            <pet:id>3</pet:id>\r
+            <!--type: string-->\r
+            <pet:name>gero et</pet:name>\r
+            <!--type: string-->\r
+            <pet:birthDate>sonoras imperio</pet:birthDate>\r
+            <!--type: int-->\r
+            <pet:typeId>3</pet:typeId>\r
+            <!--type: int-->\r
+            <pet:ownerId>3</pet:ownerId>\r
+         </pet:pet>\r
+      </pet:updatePetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/updatePetRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="5deaab6d-149e-46b4-9f12-36bb49d41487" isOneWay="false" action="" name="getPetTypes" bindingOperationName="getPetTypes" type="Request-Response" outputName="getPetTypesResponse" inputName="getPetTypesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="29d60b2a-d5eb-4b89-b14f-913bef63ca1a" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetTypesRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetTypesRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="fb37f47f-d0e7-43bf-ae89-b2f436608d4e" wsaVersion="NONE" name="VisitPortSoap11" type="wsdl" bindingName="{http://petclinic.samples.springframework.org/soap/pet}VisitPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:9966/petclinic/ws/visit.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:9966/petclinic/ws/visit.wsdl">
+      <con:part>
+        <con:url>http://localhost:9966/petclinic/ws/visit.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://petclinic.samples.springframework.org/soap/pet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://petclinic.samples.springframework.org/soap/visit" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://petclinic.samples.springframework.org/soap/pet">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://petclinic.samples.springframework.org/soap/visit" xmlns:tns="http://petclinic.samples.springframework.org/soap/visit" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getVisitsRequest">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="getVisitsResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="visit" type="tns:Visit"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVisitRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVisitResponse">
+        <xs:complexType>
+          <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="visit" type="tns:Visit"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addVisitRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="visit" type="tns:Visit"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addVisitResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="updateVisitRequest">
+        <xs:complexType>
+          <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="visit" type="tns:Visit"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateVisitResponse">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:complexType name="Visit">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="date" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+          <xs:element name="petId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getVisitResponse">
+    <wsdl:part element="sch:getVisitResponse" name="getVisitResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addVisitResponse">
+    <wsdl:part element="sch:addVisitResponse" name="addVisitResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitRequest">
+    <wsdl:part element="sch:getVisitRequest" name="getVisitRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addVisitRequest">
+    <wsdl:part element="sch:addVisitRequest" name="addVisitRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateVisitRequest">
+    <wsdl:part element="sch:updateVisitRequest" name="updateVisitRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitsRequest">
+    <wsdl:part element="sch:getVisitsRequest" name="getVisitsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitsResponse">
+    <wsdl:part element="sch:getVisitsResponse" name="getVisitsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateVisitResponse">
+    <wsdl:part element="sch:updateVisitResponse" name="updateVisitResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="VisitPort">
+    <wsdl:operation name="getVisit">
+      <wsdl:input message="tns:getVisitRequest" name="getVisitRequest"></wsdl:input>
+      <wsdl:output message="tns:getVisitResponse" name="getVisitResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addVisit">
+      <wsdl:input message="tns:addVisitRequest" name="addVisitRequest"></wsdl:input>
+      <wsdl:output message="tns:addVisitResponse" name="addVisitResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVisit">
+      <wsdl:input message="tns:updateVisitRequest" name="updateVisitRequest"></wsdl:input>
+      <wsdl:output message="tns:updateVisitResponse" name="updateVisitResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVisits">
+      <wsdl:input message="tns:getVisitsRequest" name="getVisitsRequest"></wsdl:input>
+      <wsdl:output message="tns:getVisitsResponse" name="getVisitsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VisitPortSoap11" type="tns:VisitPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getVisit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVisitRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVisitResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addVisit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addVisitRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addVisitResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVisit">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateVisitRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateVisitResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVisits">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVisitsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVisitsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VisitPortService">
+    <wsdl:port binding="tns:VisitPortSoap11" name="VisitPortSoap11">
+      <soap:address location="http://localhost:9966/petclinic/ws/visit"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+    </con:endpoints>
+    <con:operation id="6999a341-011d-4b23-b6b6-2d311bb6efbf" isOneWay="false" action="" name="addVisit" bindingOperationName="addVisit" type="Request-Response" outputName="addVisitResponse" inputName="addVisitRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="dc4cf26f-8843-4891-8b01-b38c2d95f031" name="Request 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:addVisitRequest>\r
+         <vis:visit>\r
+            <!--type: int-->\r
+            <vis:id>3</vis:id>\r
+            <!--type: string-->\r
+            <vis:date>2020-10-10</vis:date>\r
+            <!--type: string-->\r
+            <vis:description>Max</vis:description>\r
+            <!--type: int-->\r
+            <vis:petId>3</vis:petId>\r
+         </vis:visit>\r
+      </vis:addVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/addVisitRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="e5ec2104-e41b-44e7-b9a7-7d373ba1df0d" isOneWay="false" action="" name="getVisit" bindingOperationName="getVisit" type="Request-Response" outputName="getVisitResponse" inputName="getVisitRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="011bc2e8-fa17-4ca4-90bd-89b07e0f2265" name="visit with id 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:getVisitRequest>\r
+         <!--type: int-->\r
+         <vis:id>1</vis:id>\r
+      </vis:getVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/getVisitRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="1e534426-44b8-4a30-8a0c-15803681eb1b" isOneWay="false" action="" name="getVisits" bindingOperationName="getVisits" type="Request-Response" outputName="getVisitsResponse" inputName="getVisitsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="3c464d7c-a22d-4053-b825-fc2796c6f42f" name="default">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:getVisitsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:username>admin</con:username>
+          <con:password>admin</con:password>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/getVisitsRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="7f1dc228-ae4b-44a5-aafd-ed6785cb0b5f" isOneWay="false" action="" name="updateVisit" bindingOperationName="updateVisit" type="Request-Response" outputName="updateVisitResponse" inputName="updateVisitRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="c7a58285-94d8-4ab3-88ce-6e26b05299f6" name="update visit with id 1">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:updateVisitRequest>\r
+         <vis:visit>\r
+            <!--type: int-->\r
+            <vis:id>1</vis:id>\r
+            <!--type: string-->\r
+            <vis:date>2013-01-01</vis:date>\r
+            <!--type: string-->\r
+            <vis:description>sonoras imperio</vis:description>\r
+            <!--type: int-->\r
+            <vis:petId>7</vis:petId>\r
+         </vis:visit>\r
+      </vis:updateVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/updateVisitRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:testSuite id="bb4686b7-9be8-41a0-9e69-f873fb072534" name="SanityCheck">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="b0dc9112-5758-4463-9ac1-5777cd23cd1c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="owners" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="6693db1c-1b43-4276-a8dc-aa697f4ec815" name="getOwners">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>getOwners</con:operation>
+          <con:request name="getOwners" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0793b939-6ef4-4aab-8ce4-daef8d66ff07">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnersRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="49b2ee53-786f-4ab8-941b-1fd5166687a2" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="d4e816e8-61ce-431c-bfbf-4b04850c164e" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/owner';
+count(//ns2:owner)</path>
+                <content>10</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnersRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="a8a00151-5481-4606-a91b-8cf41e72f8d7" name="updateOwner - update owner with id 1">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>updateOwner</con:operation>
+          <con:request name="updateOwner - update owner with id 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="f894b20e-0e74-4882-9843-b27ce61eb632">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:updateOwnerRequest>
+         <own:owner>
+            <!--type: int-->
+            <own:id>1</own:id>
+            <!--type: string-->
+            <own:firstName>George updated</own:firstName>
+            <own:lastName>Franklin updated</own:lastName>
+            <own:address>110 W. Liberty St. updated</own:address>
+            <own:city>Madison update</own:city>
+            <own:telephone>1111111111</own:telephone>
+         </own:owner>
+      </own:updateOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="6bcd90ea-cfd6-4120-924e-3653f35f7c9e" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/updateOwnerRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="02e4d626-2e02-4c4b-aa2e-6fa232e9dfdc" name="getOwner - get owner with id 1">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>getOwner</con:operation>
+          <con:request name="getOwner - get owner with id 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="f0bb82ad-a50d-4860-866a-51feb4410205">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnerRequest>
+         <!--type: int-->
+         <own:id>1</own:id>
+      </own:getOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="d4645481-0cd7-4511-be10-808daa2a66b1" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="bdcac1bb-d5d4-49b5-be3e-6a4efce1029f" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/owner';
+//ns2:firstName</path>
+                <content>George updated</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnerRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="575fc0d4-ceeb-40ca-9325-d1d179814535" name="addOwner - add new owner">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>addOwner</con:operation>
+          <con:request name="addOwner - add new owner" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="10186ccd-0b94-4155-9bec-a26cc26f60f9">
+            <con:settings/>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:addOwnerRequest>
+         <own:owner>
+            <!--type: int-->
+            <own:id>3</own:id>
+            <!--type: string-->
+            <own:firstName>New</own:firstName>
+            <!--type: string-->
+            <own:lastName>Owner</own:lastName>
+            <!--type: string-->
+            <own:address>Address</own:address>
+            <!--type: string-->
+            <own:city>City</own:city>
+            <!--type: string-->
+            <own:telephone>1234567890</own:telephone>
+         </own:owner>
+      </own:addOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="d42008b2-daa0-4e29-b8f6-4f43fa9175cd" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/setOwnerRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="67c2eba6-8ddf-4741-8159-85da55cbe9f5" name="getOwner - get owner with id 11">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>getOwner</con:operation>
+          <con:request name="getOwner - get owner with id 11" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="f0bb82ad-a50d-4860-866a-51feb4410205">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnerRequest>
+         <!--type: int-->
+         <own:id>11</own:id>
+      </own:getOwnerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="d4645481-0cd7-4511-be10-808daa2a66b1" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="bdcac1bb-d5d4-49b5-be3e-6a4efce1029f" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/owner';
+//ns2:firstName</path>
+                <content>New</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnerRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="5907b643-c2b4-4dfc-bd89-3812dceaebe3" name="getOwners 2">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>OwnerPortSoap11</con:interface>
+          <con:operation>getOwners</con:operation>
+          <con:request name="getOwners 2" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0793b939-6ef4-4aab-8ce4-daef8d66ff07">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/owner</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:own="http://petclinic.samples.springframework.org/soap/owner" xmlns:soap="http://petclinic.samples.springframework.org/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <own:getOwnersRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="49b2ee53-786f-4ab8-941b-1fd5166687a2" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="d4e816e8-61ce-431c-bfbf-4b04850c164e" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/owner';
+count(//ns2:owner)</path>
+                <content>11</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/PetClinicPort/getOwnersRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="5d07e224-1aa1-4ff0-aa5e-a8b9ecbae744" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="pets" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="1132ad7d-8cdc-4ac6-a0af-cb48fb859b79" name="getPets">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>PetPortSoap11</con:interface>
+          <con:operation>getPets</con:operation>
+          <con:request name="getPets" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="52cfbf79-af8e-4e92-bc44-0d3d0d99095c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="e33717ff-b7d7-486d-a50c-f3c7b2d38db4" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="b33688b1-9a1d-48d5-8ca6-05c3b435bde2" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/pet';
+count(//ns2:pet)</path>
+                <content>13</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetsRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="aa46fdd0-9285-4ecb-bfa6-6284508da3b1" name="updatePet - update pet with id 3">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>PetPortSoap11</con:interface>
+          <con:operation>updatePet</con:operation>
+          <con:request name="updatePet - update pet with id 3" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="966a8c46-60dd-420d-b823-e78b9d90c56b">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pet:updatePetRequest>
+         <pet:pet>
+            <!--type: int-->
+            <pet:id>3</pet:id>
+            <!--type: string-->
+            <pet:name>gero et</pet:name>
+            <!--type: string-->
+            <pet:birthDate>2011-04-17</pet:birthDate>
+            <!--type: int-->
+            <pet:typeId>3</pet:typeId>
+            <!--type: int-->
+            <pet:ownerId>3</pet:ownerId>
+         </pet:pet>
+      </pet:updatePetRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="af81fee1-9959-4705-8a4f-03f01e7aa52d" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/updatePetRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="6520bad7-4769-45a4-939f-0847c8a968cb" name="getPet - get pet with id 3">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>PetPortSoap11</con:interface>
+          <con:operation>getPet</con:operation>
+          <con:request name="getPet - get pet with id 3" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6859d884-e7d1-4016-95fc-8ca41e9ca621">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetRequest>\r
+         <!--type: int-->\r
+         <pet:id>3</pet:id>\r
+      </pet:getPetRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="6a2b1952-701c-4ce6-86fc-59f8a6671a01" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="1e28ecbb-0c55-4aa4-9313-ae76a541e6e2" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/pet';
+//ns2:name</path>
+                <content>gero et</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="421ad330-5ba4-4fbc-bbd9-9c7cd50e3899" name="addPet - add new pet">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>PetPortSoap11</con:interface>
+          <con:operation>addPet</con:operation>
+          <con:request name="addPet - add new pet" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="38ccc494-4f61-4dab-bd85-6e09ca45448f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pet:addPetRequest>
+         <pet:pet>
+            <!--type: int-->
+            <pet:id>0</pet:id>
+            <!--type: string-->
+            <pet:name>New</pet:name>
+            <!--type: string-->
+            <pet:birthDate>2010-09-07</pet:birthDate>
+            <!--type: int-->
+            <pet:typeId>1</pet:typeId>
+            <!--type: int-->
+            <pet:ownerId>1</pet:ownerId>
+         </pet:pet>
+      </pet:addPetRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="71a2d938-9022-40fd-825b-e99ac2790d0e" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/addPetRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="fadd763d-051e-4d6f-9bc6-1f73049b336d" name="getPets 2">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>PetPortSoap11</con:interface>
+          <con:operation>getPets</con:operation>
+          <con:request name="getPets 2" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="52cfbf79-af8e-4e92-bc44-0d3d0d99095c">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/pet</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pet="http://petclinic.samples.springframework.org/soap/pet">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pet:getPetsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="e33717ff-b7d7-486d-a50c-f3c7b2d38db4" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="b33688b1-9a1d-48d5-8ca6-05c3b435bde2" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://petclinic.samples.springframework.org/soap/pet';
+count(//ns2:pet)</path>
+                <content>14</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/PetPort/getPetsRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="dfc3d977-8224-49e9-8530-b2fb482c6ded" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="visits" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="request" id="e33a7041-33be-4b6a-89a6-c2c0c01ee972" name="getVisits - default">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VisitPortSoap11</con:interface>
+          <con:operation>getVisits</con:operation>
+          <con:request name="getVisits - default" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="46820485-3fc2-4e01-b818-c72868052b84">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:getVisitsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="1ba92d98-4c74-4157-ad69-f70ffd8c0014" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="7f8a87fb-cb3e-433e-bef9-6d1a4230aea9" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace ns2='http://petclinic.samples.springframework.org/soap/visit';
+declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+count(//ns2:visit)</path>
+                <content>4</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/getVisitsRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="9559d28e-3583-41d5-ab5d-3a6d350956ad" name="updateVisit - update visit with id 1">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VisitPortSoap11</con:interface>
+          <con:operation>updateVisit</con:operation>
+          <con:request name="updateVisit - update visit with id 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="734b2896-06e4-467f-90ed-1e61f10e429f">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:updateVisitRequest>\r
+         <vis:visit>\r
+            <!--type: int-->\r
+            <vis:id>1</vis:id>\r
+            <!--type: string-->\r
+            <vis:date>2013-01-01</vis:date>\r
+            <!--type: string-->\r
+            <vis:description>sonoras imperio</vis:description>\r
+            <!--type: int-->\r
+            <vis:petId>7</vis:petId>\r
+         </vis:visit>\r
+      </vis:updateVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="a7a4bdf8-7007-4102-a443-ed95ec6fe72a" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/updateVisitRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="77e85b17-4a1b-44a6-b1f0-ee62c2ced272" name="getVisit - visit with id 1">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VisitPortSoap11</con:interface>
+          <con:operation>getVisit</con:operation>
+          <con:request name="getVisit - visit with id 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a829c388-827a-4400-9d64-fd9b1a3578ea">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:getVisitRequest>\r
+         <!--type: int-->\r
+         <vis:id>1</vis:id>\r
+      </vis:getVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="994d9149-8589-4d2a-a7c3-ae3e77a41b8e" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="23190172-2567-4aa0-8a12-2e20b3f310b8" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace ns2='http://petclinic.samples.springframework.org/soap/visit';
+declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+//*:description</path>
+                <content>sonoras imperio</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/getVisitRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="e2cdf581-0ff0-4fab-aa94-e144ab7e912d" name="addVisit - Request 1">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VisitPortSoap11</con:interface>
+          <con:operation>addVisit</con:operation>
+          <con:request name="addVisit - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="b21b4782-9d40-4d35-b9ab-71bbdfce9052">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:addVisitRequest>\r
+         <vis:visit>\r
+            <!--type: int-->\r
+            <vis:id>0</vis:id>\r
+            <!--type: string-->\r
+            <vis:date>2020-10-10</vis:date>\r
+            <!--type: string-->\r
+            <vis:description>Max</vis:description>\r
+            <!--type: int-->\r
+            <vis:petId>3</vis:petId>\r
+         </vis:visit>\r
+      </vis:addVisitRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="0f767e82-b6fb-495b-8164-ee29c9c60b15" name="SOAP Response"/>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/addVisitRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="request" id="90211dba-faca-402f-b78b-6031473d0018" name="Copy of getVisits - default">
+        <con:settings/>
+        <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:interface>VisitPortSoap11</con:interface>
+          <con:operation>getVisits</con:operation>
+          <con:request name="Copy of getVisits - default" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="46820485-3fc2-4e01-b818-c72868052b84">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:9966/petclinic/ws/visit</con:endpoint>
+            <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vis="http://petclinic.samples.springframework.org/soap/visit">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <vis:getVisitsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+            <con:assertion type="SOAP Response" id="1ba92d98-4c74-4157-ad69-f70ffd8c0014" name="SOAP Response"/>
+            <con:assertion type="XPath Match" id="7f8a87fb-cb3e-433e-bef9-6d1a4230aea9" name="XPath Match">
+              <con:configuration>
+                <path>declare namespace ns2='http://petclinic.samples.springframework.org/soap/visit';
+declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+count(//ns2:visit)</path>
+                <content>5</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:username>admin</con:username>
+              <con:password>admin</con:password>
+              <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+              <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+              <con:authType>Global HTTP Settings</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://petclinic.samples.springframework.org/soap/pet/VisitPort/getVisitsRequest"/>
+            <con:wsrmConfig version="1.2"/>
+          </con:request>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:properties/>
+  </con:testSuite>
   <con:properties/>
   <con:wssContainer/>
   <con:oAuth2ProfileContainer/>

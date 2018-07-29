@@ -1,0 +1,68 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://petclinic.samples.springframework.org/soap/visit"
+           targetNamespace="http://petclinic.samples.springframework.org/soap/visit" elementFormDefault="qualified">
+
+    <xs:element name="getVisitsRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getVisitsResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="visit" type="tns:Visit" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getVisitRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getVisitResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="visit" type="tns:Visit" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addVisitRequest">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element name="visit" type="tns:Visit" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addVisitResponse">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateVisitRequest">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+                <xs:element name="visit" type="tns:Visit" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateVisitResponse">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Visit">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="date" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="petId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

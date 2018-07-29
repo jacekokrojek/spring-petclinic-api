@@ -6,7 +6,7 @@
 //
 
 
-package org.springframework.samples.petclinic.soap.pet;
+package org.springframework.samples.petclinic.soap.visit;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="pet" type="{http://petclinic.samples.springframework.org/soap/pet}Pet"/>
+ *         &lt;element name="visit" type="{http://petclinic.samples.springframework.org/soap/visit}Visit"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pet"
+    "visit"
 })
-@XmlRootElement(name = "addPetRequest")
-public class AddPetRequest {
+@XmlRootElement(name = "updateVisitRequest")
+public class UpdateVisitRequest {
 
     @XmlElement(required = true)
-    protected Pet pet;
+    protected Visit visit;
 
     /**
-     * Gets the value of the pet property.
+     * Gets the value of the visit property.
      * 
      * @return
      *     possible object is
-     *     {@link Pet }
+     *     {@link Visit }
      *     
      */
-    public Pet getPet() {
-        return pet;
+    public Visit getVisit() {
+        return visit;
     }
 
     /**
-     * Sets the value of the pet property.
+     * Sets the value of the visit property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Pet }
+     *     {@link Visit }
      *     
      */
-    public void setPet(Pet value) {
-        this.pet = value;
+    public void setVisit(Visit value) {
+        this.visit = value;
     }
 
 }

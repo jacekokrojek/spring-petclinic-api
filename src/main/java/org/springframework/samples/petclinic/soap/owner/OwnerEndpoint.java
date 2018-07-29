@@ -1,19 +1,7 @@
-package org.springframework.samples.petclinic.soap;
+package org.springframework.samples.petclinic.soap.owner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.samples.petclinic.rest.BindingErrorsResponse;
 import org.springframework.samples.petclinic.service.ClinicService;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -23,13 +11,13 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @Endpoint
-public class PetClinicEndpoint {
-    private static final String NAMESPACE_URI = "http://petclinic.samples.springframework.org/soap";
+public class OwnerEndpoint {
+    private static final String NAMESPACE_URI = "http://petclinic.samples.springframework.org/soap/owner";
 
     private ClinicService clinicService;
 
     @Autowired
-    public PetClinicEndpoint(ClinicService clinicService) {
+    public OwnerEndpoint(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
 

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="pet" type="{http://petclinic.samples.springframework.org/soap/pet}Pet"/>
+ *         &lt;element name="petType" type="{http://petclinic.samples.springframework.org/soap/pet}PetType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,40 +37,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pet"
+    "petType"
 })
-@XmlRootElement(name = "getPetResponse")
-public class GetPetResponse {
+@XmlRootElement(name = "getPetTypesResponse")
+public class GetPetTypesResponse {
 
-    protected List<Pet> pet;
+    protected List<PetType> petType;
 
     /**
-     * Gets the value of the pet property.
+     * Gets the value of the petType property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pet property.
+     * This is why there is not a <CODE>set</CODE> method for the petType property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPet().add(newItem);
+     *    getPetType().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Pet }
+     * {@link PetType }
      * 
      * 
      */
-    public List<Pet> getPet() {
-        if (pet == null) {
-            pet = new ArrayList<Pet>();
+    public List<PetType> getPetType() {
+        if (petType == null) {
+            petType = new ArrayList<PetType>();
         }
-        return this.pet;
+        return this.petType;
     }
 
 }

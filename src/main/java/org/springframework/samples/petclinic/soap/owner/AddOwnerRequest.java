@@ -6,7 +6,7 @@
 //
 
 
-package org.springframework.samples.petclinic.soap.pet;
+package org.springframework.samples.petclinic.soap.owner;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="pet" type="{http://petclinic.samples.springframework.org/soap/pet}Pet"/>
+ *         &lt;element name="owner" type="{http://petclinic.samples.springframework.org/soap/owner}Owner"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pet"
+    "owner"
 })
-@XmlRootElement(name = "addPetRequest")
-public class AddPetRequest {
+@XmlRootElement(name = "addOwnerRequest")
+public class AddOwnerRequest {
 
     @XmlElement(required = true)
-    protected Pet pet;
+    protected Owner owner;
 
     /**
-     * Gets the value of the pet property.
+     * Gets the value of the owner property.
      * 
      * @return
      *     possible object is
-     *     {@link Pet }
+     *     {@link Owner }
      *     
      */
-    public Pet getPet() {
-        return pet;
+    public Owner getOwner() {
+        return owner;
     }
 
     /**
-     * Sets the value of the pet property.
+     * Sets the value of the owner property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Pet }
+     *     {@link Owner }
      *     
      */
-    public void setPet(Pet value) {
-        this.pet = value;
+    public void setOwner(Owner value) {
+        this.owner = value;
     }
 
 }

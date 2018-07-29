@@ -6,7 +6,7 @@
 //
 
 
-package org.springframework.samples.petclinic.soap.pet;
+package org.springframework.samples.petclinic.soap.visit;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,20 +15,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Pet complex type.
+ * <p>Java class for Visit complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Pet">
+ * &lt;complexType name="Visit">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="birthDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="typeId" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ownerId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="petId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,22 +37,20 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Pet", propOrder = {
+@XmlType(name = "Visit", propOrder = {
     "id",
-    "name",
-    "birthDate",
-    "typeId",
-    "ownerId"
+    "date",
+    "description",
+    "petId"
 })
-public class Pet {
+public class Visit {
 
     protected int id;
     @XmlElement(required = true)
-    protected String name;
+    protected String date;
     @XmlElement(required = true)
-    protected String birthDate;
-    protected int typeId;
-    protected int ownerId;
+    protected String description;
+    protected int petId;
 
     /**
      * Gets the value of the id property.
@@ -72,83 +69,67 @@ public class Pet {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getDate() {
+        return date;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setDate(String value) {
+        this.date = value;
     }
 
     /**
-     * Gets the value of the birthDate property.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getBirthDate() {
-        return birthDate;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * Sets the value of the birthDate property.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBirthDate(String value) {
-        this.birthDate = value;
+    public void setDescription(String value) {
+        this.description = value;
     }
 
     /**
-     * Gets the value of the typeId property.
+     * Gets the value of the petId property.
      * 
      */
-    public int getTypeId() {
-        return typeId;
+    public int getPetId() {
+        return petId;
     }
 
     /**
-     * Sets the value of the typeId property.
+     * Sets the value of the petId property.
      * 
      */
-    public void setTypeId(int value) {
-        this.typeId = value;
-    }
-
-    /**
-     * Gets the value of the ownerId property.
-     * 
-     */
-    public int getOwnerId() {
-        return ownerId;
-    }
-
-    /**
-     * Sets the value of the ownerId property.
-     * 
-     */
-    public void setOwnerId(int value) {
-        this.ownerId = value;
+    public void setPetId(int value) {
+        this.petId = value;
     }
 
 }
