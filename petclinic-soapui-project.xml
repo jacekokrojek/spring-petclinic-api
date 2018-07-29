@@ -1489,8 +1489,52 @@ count(//ns2:pet)</path>
       </con:testStep>
       <con:properties/>
     </con:testCase>
-    <con:testCase id="dfc3d977-8224-49e9-8530-b2fb482c6ded" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="visits" searchProperties="true">
+    <con:testCase id="dfc3d977-8224-49e9-8530-b2fb482c6ded" failOnError="true" failTestCaseOnErrors="true" keepSession="true" maxResults="0" name="visits" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="">
       <con:settings/>
+      <con:testStep type="httprequest" name="GET Login" id="fc5d7ad1-fd04-40be-8d23-238b6caa094a" disabled="true">
+        <con:settings/>
+        <con:config method="GET" xsi:type="con:HttpRequest" id="43f1356a-3b95-4706-8d92-58fc5f09a33d" name="GET Login" postQueryString="true" mediaType="application/x-www-form-urlencoded" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:9966/petclinic/login</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="Login" id="4567f30f-ebcf-4dc0-a02a-0b4a228c1ee3">
+        <con:settings/>
+        <con:config method="POST" xsi:type="con:HttpRequest" id="43f1356a-3b95-4706-8d92-58fc5f09a33d" name="Login" postQueryString="true" mediaType="application/x-www-form-urlencoded" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@follow-redirects">false</con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:9966/petclinic/login</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <con:parameter>
+              <con:name>username</con:name>
+              <con:value>admin</con:value>
+              <con:style>QUERY</con:style>
+            </con:parameter>
+            <con:parameter>
+              <con:name>password</con:name>
+              <con:value>admin</con:value>
+              <con:style>QUERY</con:style>
+            </con:parameter>
+          </con:parameters>
+        </con:config>
+      </con:testStep>
       <con:testStep type="request" id="e33a7041-33be-4b6a-89a6-c2c0c01ee972" name="getVisits - default">
         <con:settings/>
         <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -1717,4 +1761,5 @@ count(//ns2:visit)</path>
   <con:wssContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
+  <con:sensitiveInformation/>
 </con:soapui-project>
