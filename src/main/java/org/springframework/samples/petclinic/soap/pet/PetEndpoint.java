@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.soap.pet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -18,6 +20,8 @@ public class PetEndpoint {
     private static final String NAMESPACE_URI = "http://petclinic.samples.springframework.org/soap/pet";
 
     private ClinicService clinicService;
+
+    private static final Logger log = LoggerFactory.getLogger(PetEndpoint.class);
 
     @Autowired
     public PetEndpoint(ClinicService clinicService) {
@@ -39,6 +43,7 @@ public class PetEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addPetRequest")
     @ResponsePayload
     public AddPetResponse addPet(@RequestPayload AddPetRequest petRequest) {
+        log.info("Adding pet with photo name: {}", petRequest.pet.photo.name);
         Pet pet = petRequest.getPet();
         if (pet != null) {
             org.springframework.samples.petclinic.model.Pet p = mapToModelPet(pet);
@@ -88,7 +93,7 @@ public class PetEndpoint {
         return response;
     }
 
-    private Pet mapFromModelPet(org.springframework.samples.petclinic.model.Pet p){
+    private Pet mapFromModelPet(org.springframework.samples.petclinic.model.Pet p) {
         Pet pet = new Pet();
         pet.setName(p.getName());
         pet.setTypeId(p.getType().getId());
@@ -99,7 +104,7 @@ public class PetEndpoint {
         return pet;
     }
 
-    private org.springframework.samples.petclinic.model.Pet mapToModelPet( Pet p){
+    private org.springframework.samples.petclinic.model.Pet mapToModelPet(Pet p) {
         org.springframework.samples.petclinic.model.Pet pet = new org.springframework.samples.petclinic.model.Pet();
         pet.setName(p.getName());
         org.springframework.samples.petclinic.model.PetType petType = this.clinicService.findPetTypeById(p.getTypeId());

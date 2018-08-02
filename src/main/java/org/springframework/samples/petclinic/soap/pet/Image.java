@@ -11,21 +11,22 @@ package org.springframework.samples.petclinic.soap.pet;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for PetType complex type.
+ * <p>Java class for Image complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PetType">
+ * &lt;complexType name="Image">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="image" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,31 +36,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PetType", propOrder = {
-    "id",
-    "name"
+@XmlType(name = "Image", propOrder = {
+    "name",
+    "image"
 })
-public class PetType {
+public class Image {
 
-    protected int id;
     @XmlElement(required = true)
     protected String name;
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
+    @XmlElement(required = true)
+    @XmlMimeType("image/png")
+    protected java.awt.Image image;
 
     /**
      * Gets the value of the name property.
@@ -83,6 +70,30 @@ public class PetType {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the image property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.awt.Image }
+     *     
+     */
+    public java.awt.Image getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the value of the image property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.awt.Image }
+     *     
+     */
+    public void setImage(java.awt.Image value) {
+        this.image = value;
     }
 
 }
