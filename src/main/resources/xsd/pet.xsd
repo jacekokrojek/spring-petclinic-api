@@ -1,4 +1,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://petclinic.samples.springframework.org/soap/pet"
+           xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+           xmime:schemaLocation="http://www.w3.org/2005/05/xmlmime"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.w3.org/2005/05/xmlmime "
            targetNamespace="http://petclinic.samples.springframework.org/soap/pet" elementFormDefault="qualified">
 
     <xs:element name="getPetsRequest">
@@ -63,6 +67,7 @@
             <xs:element name="birthDate" type="xs:string"/>
             <xs:element name="typeId" type="xs:int"/>
             <xs:element name="ownerId" type="xs:int"/>
+            <xs:element name="photo" type="tns:Image"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -83,6 +88,13 @@
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>
             <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Image">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="image" type="xs:base64Binary" xmime:expectedContentTypes="image/png"/>
         </xs:sequence>
     </xs:complexType>
 
