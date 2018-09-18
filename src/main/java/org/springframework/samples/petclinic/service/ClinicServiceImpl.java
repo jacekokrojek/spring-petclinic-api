@@ -15,10 +15,14 @@
  */
 package org.springframework.samples.petclinic.service;
 
+import java.io.IOException;
 import java.util.Collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.orm.ObjectRetrievalFailureException;
@@ -36,6 +40,7 @@ import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Mostly used as a facade for all Petclinic controllers
@@ -47,6 +52,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 
 public class ClinicServiceImpl implements ClinicService {
+
+
+    private static final Logger log = LoggerFactory.getLogger(ClinicServiceImpl.class);
 
     private PetRepository petRepository;
     private VetRepository vetRepository;
@@ -67,7 +75,7 @@ public class ClinicServiceImpl implements ClinicService {
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
-        this.specialtyRepository = specialtyRepository; 
+        this.specialtyRepository = specialtyRepository;
 		this.petTypeRepository = petTypeRepository;
     }
 
@@ -249,14 +257,14 @@ public class ClinicServiceImpl implements ClinicService {
 	@Transactional
 	public void savePet(Pet pet) throws DataAccessException {
 		petRepository.save(pet);
-		
+
 	}
 
 	@Override
 	@Transactional
 	public void saveVisit(Visit visit) throws DataAccessException {
 		visitRepository.save(visit);
-		
+
 	}
 
 	@Override
@@ -270,7 +278,7 @@ public class ClinicServiceImpl implements ClinicService {
 	@Transactional
 	public void saveOwner(Owner owner) throws DataAccessException {
 		ownerRepository.save(owner);
-		
+
 	}
 
 	@Override
@@ -284,8 +292,24 @@ public class ClinicServiceImpl implements ClinicService {
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
 	}
-	
-	
 
+    @Override
+    public String addPetPhoto(int petId, MultipartFile file) {
+        log.info("adding photo to pet: {}", petId);
+        Pet pet = petRepository.findById(petId);
+        try {
+            pet.setPhoto(file.getBytes());
+        } catch (IOException e) {
+            log.error("IOException", e);
+        }
+        petRepository.save(pet);
+        return Integer.toString(petId);
+    }
 
+    @Override
+    public byte[] loadPetImage(String fileName) {
+        int petId = Integer.valueOf(fileName);
+        Pet pet = petRepository.findById(petId);
+        return pet.getPhoto();
+    }
 }
