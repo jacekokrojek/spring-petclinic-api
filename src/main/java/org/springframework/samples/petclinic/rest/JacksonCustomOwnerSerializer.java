@@ -70,7 +70,7 @@ public class JacksonCustomOwnerSerializer extends StdSerializer<Owner> {
 			}
 			jgen.writeStringField("name", pet.getName());
 			jgen.writeStringField("birthDate", formatter.format(pet.getBirthDate()));
-
+            jgen.writeBooleanField("hasPhoto", pet.hasImage());
 			PetType petType = pet.getType();
 			jgen.writeObjectFieldStart("type");
 			jgen.writeNumberField("id", petType.getId());

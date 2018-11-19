@@ -55,6 +55,7 @@ public class JacksonCustomPetSerializer extends StdSerializer<Pet> {
 		}
 		jgen.writeStringField("name", pet.getName());
 		jgen.writeStringField("birthDate", formatter.format(pet.getBirthDate()));
+		jgen.writeBooleanField("hasPhoto", pet.hasImage());
 
 		PetType petType = pet.getType();
 		jgen.writeObjectFieldStart("type");

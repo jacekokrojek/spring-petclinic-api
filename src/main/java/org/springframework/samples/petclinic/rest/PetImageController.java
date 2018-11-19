@@ -17,6 +17,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@CrossOrigin(exposedHeaders = "errors, content-type")
+@RequestMapping("api")
 public class PetImageController {
 
     private static final Logger log = LoggerFactory.getLogger(PetImageController.class);
