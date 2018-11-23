@@ -75,6 +75,10 @@ public class Pet extends NamedEntity {
     @Column( name = "photo" )
     private byte[] photo;
 
+    public boolean hasImage(){
+        return photo != null && photo.length != 0;
+    }
+
 
     public void setBirthDate( Date birthDate ) {
         this.birthDate = birthDate;
