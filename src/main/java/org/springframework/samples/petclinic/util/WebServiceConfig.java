@@ -61,7 +61,8 @@ public class WebServiceConfig extends WsConfigurationSupport {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setPackagesToScan("org.springframework.samples.petclinic.soap.pet");
+        marshaller.setPackagesToScan();
+        marshaller.setPackagesToScan("org.springframework.samples.petclinic.soap.*");
         marshaller.setMtomEnabled(true);
         return marshaller;
     }
@@ -91,7 +92,7 @@ public class WebServiceConfig extends WsConfigurationSupport {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("VisitPort");
         wsdl11Definition.setLocationUri("/ws/visit");
-        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap/pet");
+        wsdl11Definition.setTargetNamespace("http://petclinic.samples.springframework.org/soap/visit");
         wsdl11Definition.setSchema(visitSchema);
         return wsdl11Definition;
     }
