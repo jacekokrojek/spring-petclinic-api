@@ -51,8 +51,12 @@ import springfox.documentation.annotations.ApiIgnore;
 @ApiIgnore
 public class VetRestController {
 
-	@Autowired
 	private ClinicService clinicService;
+
+    @Autowired
+    public VetRestController(ClinicService clinicService) {
+        this.clinicService = clinicService;
+    }
 
     @PreAuthorize( "hasRole(@roles.VET_ADMIN)" )
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -125,7 +129,4 @@ public class VetRestController {
 		this.clinicService.deleteVet(vet);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-
-
-
 }
